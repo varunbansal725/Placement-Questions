@@ -1,0 +1,32 @@
+class Solution {
+public:
+    int maxpathsum(Node *root,int &res)
+ {  
+     if(!root)
+        return 0;
+    if(root->left==NULL && root->right==NULL)
+        return root->data;
+        
+    int leftSum=maxpathsum(root->left, res);
+    int rightSum = maxpathsum(root->right, res);
+    
+    if(root->left && root->right) {
+        res = max(res, rightSum+leftSum+root->data);
+        return max(leftSum, rightSum)+root->data;
+    }
+    
+    return (!root->left) ? rightSum + root->data : leftSum + root->data; 
+    
+    
+ }
+
+    int maxPathSum(Node* root)
+    {
+        // code here
+        int res=INT_MIN;
+        int value = maxpathsum(root, res);
+        if(res==INT_MIN)
+            return value;
+        return res;    
+    }
+};
