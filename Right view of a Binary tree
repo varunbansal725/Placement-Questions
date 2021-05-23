@@ -1,0 +1,28 @@
+void rightViewUtil(vector<int> &result, struct Node *root, 
+                   int level, int max_level)
+{
+    // Base Case
+    if (root == NULL) return;
+  
+    // If this is the last Node of its level
+    if (max_level < level)
+    {
+        result.push_back(root->data);
+        max_level = level;
+    }
+  
+    // Recur for right subtree first, 
+    // then left subtree
+    rightViewUtil(result, root->right, level + 1, max_level);
+    rightViewUtil(result, root->left, level + 1, max_level);
+}
+    vector<int> rightView(Node *root)
+    {
+       // Your Code here
+       vector<int> result;
+        
+        int max_level=0;
+        rightViewUtil(result, root, 1, max_level);
+       return result;
+        
+    }
