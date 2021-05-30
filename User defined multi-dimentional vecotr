@@ -1,0 +1,31 @@
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+int main()
+{
+    int i,b,a,j,y,x, value1, value2;
+    cout << "Enter size of 2D array: ";
+    cin >> x;
+    vector<vector<int>> arr(x);
+    for(i=0; i<x; i++) {
+        cout << "Enter size of column " << i << " : ";
+        cin >> a;
+        arr[i] = vector<int>(a);
+        for(j=0; j<a; j++) {
+            cin >> y;
+            arr[i][j] = i+j+1;
+        }
+    }
+
+     for (i = 0; i < arr.size(); i++)
+    {
+        for (j = 0; j < arr[i].size(); j++)
+        {
+            cout << arr[i][j] << " ";
+        }
+        cout << endl;
+    }
+
+}
